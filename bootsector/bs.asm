@@ -1,39 +1,17 @@
-; ############### BOOT-SECTOR ##########
+;################### BOOT SECTOR #################
+	[org 0x7c00]			; specifies where bios will load the boot sector
+	
+	mov bx, HELLO_MSG		
+	call print_string		; calling the print utility
 
-mov	ah,0x0e	;for teletype mode interupt
-mov	al,'H'
-int	0x10
-mov	al,'E'
-int	0x10
-mov	al,'L'
-int	0x10
-mov	al,'L'
-int	0x10
-mov	al,'O'
-int	0x10
-mov	al,' '
-int	0x10
-mov	al,'O'
-int	0x10
-mov	al,'S'
-int	0x10
+	jmp $				; infinite loop, jumping to current directory
 
-jmp	$	; Jumping to current address
-times	510-($-$$)	db 0
-dw	0xaa55
+	%include "../asm_utilities/print_string_function.asm"		; including the print utility function file
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+;DATA
+HELLO_MSG:
+	db '###### Pmy OS ######',0 
+	
+				
+	times 510-($-$$) db 0		; padding 0 till magic number
+	dw 0xaa55
