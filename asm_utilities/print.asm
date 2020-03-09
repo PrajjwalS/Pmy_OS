@@ -22,6 +22,9 @@ loop:
 return:
 	POPA
 	RET
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;:; FOR HEX ;;;;;;;;;;;;;;;;;
 
 add_nibble:			; adds the nibble stored in AX (lower 4 bits) to HEX_STRING
 					; expects BX to store address of the next index of HEX_STRING
@@ -34,9 +37,7 @@ lesser_0xA:
 	INC	BX
 	MOV	[BX],AX
 	RET	
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;; FOR HEX ;;;;;;;;;;;;;;;
 print_hex:	
 	
 	PUSHA
