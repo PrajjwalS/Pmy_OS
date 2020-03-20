@@ -22,9 +22,10 @@ loop:
 return:
 	POPA
 	RET
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;:; FOR HEX ;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;; FOR HEX ;;;;;;;;;;;;;;;
 
 add_nibble:			; adds the nibble stored in AX (lower 4 bits) to HEX_STRING
 					; expects BX to store address of the next index of HEX_STRING
@@ -55,11 +56,12 @@ repeat:
 	CALL add_nibble
 	SHR WORD [MASK],4
 	SUB	BYTE [SHIFT],4			
-	LOOP repeat	
+LOOP repeat	
 	
 	MOV	BX,HEX_STRING	
 	CALL print_string
 	POPA
+	RET
 
 ;DATA
 HEX_STRING:
