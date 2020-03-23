@@ -39,7 +39,7 @@ repeat:
 	MOV	BX,HEX_STRING	
 	CALL print_string
 	POPA
-	RET
+	
 	;%include "../asm_utilities/print_string_function.asm"		; including the print utility function file
 
 ;DATA
