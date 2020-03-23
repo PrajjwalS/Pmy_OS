@@ -40,7 +40,13 @@ lesser_0xA:
 	RET	
 
 print_hex:	
-	
+	; resetting String and other vars
+	MOV  AX,[RESET_STRING]
+	MOV	 [HEX_STRING],AX
+	MOV  WORD [MASK],0xF000
+	MOV  BYTE [SHIFT],12
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 	PUSHA
 	MOV	BX,HEX_STRING
 	ADD	BX,1
@@ -65,7 +71,9 @@ LOOP repeat
 
 ;DATA
 HEX_STRING:
-	TIMES 7 DB '0x',0
+	TIMES 7 DB 0
+RESET_STRING:
+	DB	'0x',0,0
 MASK:
 	 DW 0xF000
 SHIFT:
