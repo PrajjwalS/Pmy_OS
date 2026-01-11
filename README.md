@@ -10,21 +10,29 @@ This repository is intentionally educational but structured with **real OS desig
 - a real kernel
 - user-space programs
 
-## Dependencies - install for running os in emulator: qemu-system-x86
+## Dependencies
+Install for running os in emulator: qemu-system-x86
 
-## Baby Steps:
-# 1  Create the image for build container  
-make build_img  
 
-# 2 Build the PmyOS images (this should generate the files in build dir)
-make build
 
-# 3 Run on qemu x86 32 bit mode.
-make run
+# Baby Steps:
+### 1  Create the image for build container  
+`make build_img`
 
-## if you didnt install the qemu ui stuff, then you can run it in terminal via curses too:
-./scripts/run -display curses
-# TODO : integrate this in Makefile itself
+### 2 Build the PmyOS images (this should generate the files in build dir)
+`make build`
 
-## TODO
+### 3 Run on qemu x86 32 bit mode.
+`make run`
+
+##### If you didnt install the qemu ui stuff, then you can run it in terminal via curses too:
+`./scripts/run -display curses`
+####### TODO : integrate this in Makefile itself
+
+# TODO
 LOTS TODO!
+1) Add docs explaining the C kernel related changes and compilation.
+2) Add docs to explain the x86 bios boot image compilation.
+3) Enhance the kernel upto a point where we can build a simple userspace app.
+4) Re write the docs/progress.md related to the new changes.
+5) Add docs for docker related stuff and top level Makefile
