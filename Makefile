@@ -5,9 +5,12 @@
 ARCH ?= x86
 TOPDIR := $(CURDIR)
 
-.PHONY: all bios clean run
+.PHONY: all bios kernel clean run
 
-all: bios
+all: kernel bios
+
+kernel:
+	$(MAKE) -C kernel
 
 bios:
 	$(MAKE) -C boot/$(ARCH)/bios TOPDIR=$(TOPDIR)
@@ -18,4 +21,5 @@ run: bios
 		-display curses
 
 clean:
+	$(MAKE) -C kernel clean
 	$(MAKE) -C boot/$(ARCH)/bios clean TOPDIR=$(TOPDIR)

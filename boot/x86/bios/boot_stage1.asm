@@ -28,6 +28,7 @@ start:
     mov ax, 0x0000
     mov es, ax          ; ES = 0
     mov bx, 0x8000      ; Offset
+    mov cl, 0x02        ; sector 2 = stage2
     mov al, 1           ; Read 1 sector
     ; DL already contains boot drive
     call load_disk

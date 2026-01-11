@@ -12,7 +12,7 @@ This repository is intentionally educational but structured with **real OS desig
 
 
 ## Baby Steps:
- 0 ) Install nasm, qemu  
+ 0 ) Install nasm, qemu, gcc-i686-linux-gnu
  1 ) make    # Currently only bios boot loader is built as an img.  
  2 ) make run # Currently only bios bootup works.   
 

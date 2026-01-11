@@ -7,6 +7,9 @@ NASM := nasm
 # TOPDIR is passed from the root Makefile
 BUILD_DIR := $(TOPDIR)/build/boot/bios
 
+# Assume the kernel is already built by the time we build the bootloader
+KERNEL_BIN := $(TOPDIR)/build/kernel/kernel.bin
+
 INCLUDES := \
 	-I . \
 	-I utils \
@@ -41,11 +44,10 @@ $(STAGE2_BIN): $(STAGE2_SRC)
 	$(NASM) -f bin $(INCLUDES) $< -o $@
 
 # ---------------------------------------------------------
-# Disk image
+# Disk image with kernel (depends on kernel being already built)
 # ---------------------------------------------------------
-$(OS_IMAGE): $(STAGE1_BIN) $(STAGE2_BIN)
-	cat $(STAGE1_BIN) $(STAGE2_BIN) > $(OS_IMAGE)
-	@echo "Built $(OS_IMAGE)"
+$(OS_IMAGE): $(STAGE1_BIN) $(STAGE2_BIN) $(KERNEL_BIN)
+	cat $(STAGE1_BIN) $(STAGE2_BIN) $(KERNEL_BIN) > $(OS_IMAGE)
 
 clean:
 	rm -rf $(BUILD_DIR)

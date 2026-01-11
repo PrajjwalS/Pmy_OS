@@ -6,6 +6,7 @@
 ;   DL = drive number (provided by BIOS)
 ;   ES:BX = destination buffer
 ;   AL = number of sectors to read
+;   CL = start sector index
 ;
 ; Reads:
 ;   From CHS 0/0/2 (immediately after boot sector)
@@ -25,7 +26,6 @@ load_disk:
     mov ah, 0x02        ; BIOS read sectors
     mov ch, 0x00        ; cylinder 0
     mov dh, 0x00        ; head 0
-    mov cl, 0x02        ; sector 2 (first sector after boot)
 
     int 0x13
     jc  disk_error     ; CF set = error
