@@ -1,25 +1,21 @@
 # =========================================================
-# PmyOS - Top-level Makefile
+# Top-level Makefile for PmyOS
+# Build inside Docker, Run QEMU on host
 # =========================================================
 
-ARCH ?= x86
-TOPDIR := $(CURDIR)
+.PHONY: docker-build build run clean shell
 
-.PHONY: all bios kernel clean run
+build_img:
+	docker build -t pmyos_build_img	.
 
-all: kernel bios
+build:
+	./scripts/build.sh all
 
-kernel:
-	$(MAKE) -C kernel
-
-bios:
-	$(MAKE) -C boot/$(ARCH)/bios TOPDIR=$(TOPDIR)
-
-run: bios
-	qemu-system-i386 \
-		-drive format=raw,file=$(TOPDIR)/build/boot/bios/os.img \
-		-display curses
+run:
+	./scripts/run.sh
 
 clean:
-	$(MAKE) -C kernel clean
-	$(MAKE) -C boot/$(ARCH)/bios clean TOPDIR=$(TOPDIR)
+	./scripts/build.sh clean
+
+shell:
+	./scripts/shell.sh $@

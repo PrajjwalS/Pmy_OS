@@ -10,12 +10,21 @@ This repository is intentionally educational but structured with **real OS desig
 - a real kernel
 - user-space programs
 
+## Dependencies - install for running os in emulator: qemu-system-x86
 
 ## Baby Steps:
- 0 ) Install nasm, qemu, gcc-i686-linux-gnu
- 1 ) make    # Currently only bios boot loader is built as an img.  
- 2 ) make run # Currently only bios bootup works.   
+# 1  Create the image for build container  
+make build_img  
 
+# 2 Build the PmyOS images (this should generate the files in build dir)
+make build
+
+# 3 Run on qemu x86 32 bit mode.
+make run
+
+## if you didnt install the qemu ui stuff, then you can run it in terminal via curses too:
+./scripts/run -display curses
+# TODO : integrate this in Makefile itself
 
 ## TODO
 LOTS TODO!
