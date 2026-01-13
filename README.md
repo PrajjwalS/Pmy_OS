@@ -1,10 +1,11 @@
 # PmyOS
 
-PmyOS is a from-scratch operating system project without any aim currently.
+PmyOS is a from-scratch operating system.
 
 The project currently targets **x86 (BIOS)** and implements a **multi-stage bootloader** that transitions the CPU from **16-bit real mode to 32-bit protected mode** without relying on external bootloaders (GRUB, Limine, etc.).
+It also has an implemented bare minimum kernel written in C, excuting assembly directly to print text. (see docs/progress.md for current capabilities)
 
-This repository is intentionally educational but structured with **real OS design discipline**, so it can scale to:
+This project is heading towards:
 - UEFI
 - multiple architectures
 - a real kernel
@@ -14,10 +15,9 @@ This repository is intentionally educational but structured with **real OS desig
 Install for running os in emulator: qemu-system-x86
 
 
-
 # Baby Steps:
 ### 1  Create the image for build container  
-`make build_img`
+`make build_img` 
 
 ### 2 Build the PmyOS images (this should generate the files in build dir)
 `make build`

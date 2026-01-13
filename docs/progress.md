@@ -9,8 +9,14 @@ and to keep the project fun, educational, and useful.
 
 ---
 
-## Current State (Baseline)
+## Current State
 
+- Done with Phase 0 - Bios bootstrapping for x86
+- Done with Phase 1 - creating a minimal kernel that prints messages on screen
+
+---
+
+## Phase 0 (Done)
 The following functionality is already implemented and working:
 
 - BIOS Stage 1 bootloader (512 bytes)
@@ -27,9 +33,6 @@ The following functionality is already implemented and working:
 - Clean `.gitignore`
 - End-to-end bootable image via QEMU
 
-This baseline solves most of the **hard bootstrapping problems**.
-
----
 
 ## Phase 1 – Kernel Entry & Minimal Kernel (Done)
 
@@ -231,36 +234,3 @@ common/
 - Boot and kernel remain separate concerns
 
 ---
-
-## Design & Project Recommendations
-
-1. Treat each phase as a release
-   - Tag milestones (e.g., `v0.2-kernel-entry`)
-   - Keep motivation high
-
-2. Avoid premature abstraction
-   - No fancy allocators early
-   - No complex frameworks
-   - Clarity over cleverness
-
-3. Keep the OS bootable at all times
-   - If it stops booting, fix that first
-
-4. Document lightly but consistently
-   - Short notes in `README.md` or `docs/`
-   - Focus on decisions, not code dumps
-
-5. Optimize for learning and enjoyment
-   - This is a systems playground
-   - Practical understanding > completeness
-
----
-
-## Immediate Next Step (Recommended)
-
-Begin **Phase 1**:
-
-> Define the kernel entry ABI and implement `kernel/x86/entry.asm`
-> followed by a minimal `kmain()` in C.
-
-This is where PmyOS truly becomes an operating system.
